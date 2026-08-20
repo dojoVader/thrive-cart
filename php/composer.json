@@ -1,0 +1,17 @@
+{
+    "name": "acme/widget",
+    "type": "project",
+    "require": {
+        "phpunit/phpunit": "12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Acme\\Widget\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Okeowo Aderemi"
+        }
+    ]
+}
