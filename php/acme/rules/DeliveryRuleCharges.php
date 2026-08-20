@@ -4,7 +4,6 @@ namespace acme\rules;
 
 class DeliveryRuleCharges implements IDeliveryRule {
 
-
     private array $delivery_charges = [];
 
     public function __construct(array $delivery_charges)
