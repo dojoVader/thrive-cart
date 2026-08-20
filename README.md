@@ -1,2 +1,1 @@
 # thrive-cart
-# thrive-cart
