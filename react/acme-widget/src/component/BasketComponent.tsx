@@ -23,7 +23,9 @@ const defaultOffers: IOffer[] = [new RedOfferHalfPrice()];
 export const BasketComponent = (props: BasketComponentProps) => {
     const {products, quantities, deliveryRule = defaultDeliveryRule, offers = defaultOffers} = props;
 
+    // Let's avoid unnecessary calculation if the params don't change
     const basket = useMemo(() => {
+        // Create a catalogue of products for the basket
         const catalogue = products.reduce<Record<string, Product>>((acc, product) => {
             acc[product.productCode] = product;
             return acc;
