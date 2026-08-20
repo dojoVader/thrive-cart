@@ -13,7 +13,8 @@ const DOT_COLORS: Record<string, string> = {
     B01: "#2E5C8A",
 };
 
-export const ProductList = ({products, quantities, onIncrement, onDecrement}: ProductListProps) => {
+export const ProductList = (props: ProductListProps) => {
+    const {products, quantities, onIncrement, onDecrement} = props;
     return (
         <div className="flex flex-col gap-3">
             {products?.map((product) => {
@@ -45,7 +46,6 @@ export const ProductList = ({products, quantities, onIncrement, onDecrement}: Pr
                                     type="button"
                                     onClick={() => onDecrement(product.productCode)}
                                     disabled={quantity === 0}
-                                    aria-label={`Decrease ${product.productName} quantity`}
                                     className="flex h-7 w-7 items-center justify-center rounded-md border border-gray-200 text-gray-400 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
                                 >
                                     &minus;
@@ -56,7 +56,6 @@ export const ProductList = ({products, quantities, onIncrement, onDecrement}: Pr
                                 <button
                                     type="button"
                                     onClick={() => onIncrement(product.productCode)}
-                                    aria-label={`Increase ${product.productName} quantity`}
                                     className="flex h-7 w-7 items-center justify-center rounded-md bg-black text-white transition hover:bg-gray-800"
                                 >
                                     +

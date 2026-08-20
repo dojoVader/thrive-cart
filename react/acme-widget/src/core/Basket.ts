@@ -29,7 +29,7 @@ export class Basket {
         this.product_code.push(product_code);
     }
 
-    public total(): number {
+    public getSubtotal(): number {
         let total_sum = 0.0;
 
         // Calculate the sum of the total using the value since key can be duplicated
@@ -40,17 +40,27 @@ export class Basket {
             }
         }
 
+        return total_sum;
+    }
+
+    public getDiscount(): number {
         let offerApplied = 0.0;
 
         for (const offer of this.offers) {
-            offerApplied = offer.apply(this.product_code, this.product_catalogues);
+            offerApplied += offer.apply(this.product_code, this.product_catalogues);
         }
 
-        total_sum = total_sum - offerApplied;
+        return Math.round(offerApplied * 100) / 100;
+    }
 
-        const totalCharges = this.deliveryRule.calculate(total_sum);
+    public getDeliveryCost(): number {
+        return this.deliveryRule.calculate(this.getSubtotal() - this.getDiscount());
+    }
 
-        const finalCharge = total_sum + totalCharges;
+    public total(): number {
+        const subTotalAfterDiscount = this.getSubtotal() - this.getDiscount();
+
+        const finalCharge = subTotalAfterDiscount + this.deliveryRule.calculate(subTotalAfterDiscount);
 
         return Math.round(finalCharge * 100) / 100;
     }

@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import './App.css'
 import {ProductList} from "./component/ProductList.tsx";
+import {BasketComponent} from "./component/BasketComponent.tsx";
 import {Product} from "./core/Product.ts";
 
 const catalogue: Product[] = [
@@ -45,6 +46,12 @@ function App() {
                     onIncrement={increment}
                     onDecrement={decrement}
                 />
+
+                <p className="mb-3 mt-8 text-xs font-semibold uppercase tracking-widest text-amber-700/80">
+                    Basket
+                </p>
+
+                <BasketComponent products={catalogue} quantities={quantities}/>
             </div>
         </div>
     )
