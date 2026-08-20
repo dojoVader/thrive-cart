@@ -32,6 +32,6 @@ npm run test # Runs a simple Jest test to ensure that the application is working
 
 For this application, the following assumptions were made:
 
-1. IOffer Interface: Because the assignment requires multiple offers, I implemented a data structure that takes multiple offers and applies them on the items, because in the future we are not sure what type of offer will be implemented, I went with the direction of making the IOffer interface which will allow for extensibility and flexibility. 
+1. IOffer Interface: The Basket class takes the array of IOffers for the sake of allowing developers extend the functionality of the Basket class to accept different types of offers in the future, this also allows for better flexibility and scalability of the application.
 
-2. Basket::add(productCode): I used the add Method to only calculate the productCode that have been passed to it, this ensures that only code in the catalogue are processed and added to the basket, this also ensures that the basket is not bloated with unnecessary data.
+2. Basket::add(productCode): Though not specified in the documentation, the add method was used to only process the productCode sent to it, this ensures that only products in the catalogs that matches the productCode are added to the basket, this also ensures that the application is more robust and less prone to errors.
